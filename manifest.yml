@@ -1,0 +1,13 @@
+---
+applications:
+  - name: cap-po-approval
+    memory: 512M
+    buildpacks:
+      - nodejs_buildpack
+    random-route: false
+    services:
+      - cap-po-approval-destination
+      - cap-po-approval-connectivity
+      - cap-po-approval-xsuaa
+    env:
+      NODE_ENV: production

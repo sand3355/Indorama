@@ -1,0 +1,27 @@
+_schema-version: "3.1"
+ID: cap-po-approval
+version: 1.0.0
+
+modules:
+  - name: cap-po-approval-srv
+    type: nodejs
+    path: .  # Changed from 'srv' to '.' since package.json is in root
+    requires:
+      - name: cap-po-approval-destination
+      - name: cap-po-approval-connectivity
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 512M
+
+resources:
+  - name: cap-po-approval-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+
+  - name: cap-po-approval-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
